@@ -1,0 +1,50 @@
+package com.talhakasikci.odev1
+
+fun main() {
+    val city = "Istanbul"
+    val country = "Turkey"
+    val phoneNumber = 5347758056
+    val postalCode = 34700
+    val email = "talhakasikci0@gmail.com"
+    val job = "Computer Engineer"
+    val stockPieces = 50
+    val customerName = "Talha Kasikci"
+    val amount = 1000
+    val birthDate = "1998-01-01"
+    val salery = 100000
+    val isMarried = false
+    val productComment = "This is a great product!"
+    val priceDate = "2023-10-01"
+    val payment = 3245.43
+    val orderPieces = 6
+    val carModel = "Tesla Model S"
+    val bookName = "1984"
+    val publicationDate = "1949-06-08"
+    val saleryPercent = 25.5
+    val roomNumber = 6
+    val latitude = 41.0082
+    val longitude = 28.9784
+    val productName = "Laptop"
+    val foodPrice = 543.6
+    val brand = "Apple"
+    val songName = "Die with a smile"
+    val videoDuration = 234234
+    val productPoint = 4.5
+    val imageName = "image.png"
+    val fileFormat = "jpg"
+    val color = "Red"
+    val colorCode = "#FF0000"
+    val phoneModel = "iPhone 13"
+    val screenSize =  6.1
+    val weight = 1.5
+    val nationalDay = "Republic Day"
+    val holidayDate = "2023-10-29"
+    val reservationDate = "2023-10-15"
+    val streetName = "Istiklal Street"
+    val busLine = "19EK"
+    val remainingMinutes = 15.5
+    val trackingCode = "ABC123XYZ"
+    val couponDuration = 30
+    val couponCode = "DISCOUNT20"
+    val billingAddress = "123 Main St, Istanbul, Turkey"
+}
