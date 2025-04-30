@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Odev3</string>
+    <string name="Add_to_order">Siparişe Ekle</string>
+    <string name="cafeLatte">Café Latte</string>
+    <string name="cafeLatteTall">Tall</string>
+    <string name="croissant">Kruvasan</string>
+    <string name="brownie">Brownie</string>
+    <string name="Muffin">Muffin</string>
+    <string name="browniePrice">$2.5</string>
+    <string name="croissantPrice">$2.9</string>
+    <string name="muffinPrice">$1.5</string>
+    <string name="cafeLatteDescription">Bir Tall (354 ml) café latte, bir shot espresso, buharda ısıtılmış tam yağlı süt ve bir kat süt köpüğü ile hazırlanır. Yumuşak ve kremamsı olup doğal tatlılık içerir, yaklaşık 176 kcal içerir — hafif bir kahve deneyimi için mükemmel bir denge.</string>,
+    <string name="Add_to_Card">$3.4 | Sepete Ekle</string>
+</resources>

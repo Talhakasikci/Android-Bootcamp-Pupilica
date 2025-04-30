@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Odev3</string>
+    <string name = "Add_to_order">Add to order</string>
+    <string name = "cafeLatte">Café Latte</string>
+    <string name="cafeLatteTall">Tall</string>
+    <string name="croissant">Croissant</string>
+    <string name="brownie">Brownie</string>
+    <string name="Muffin">Muffin</string>
+    <string name="browniePrice">$2.5</string>
+    <string name="croissantPrice">$2.9</string>
+    <string name="muffinPrice">$1.5</string>
+    <string name="cafeLatteDescription">A Tall (354 ml) café latte is made with one shot of espresso, steamed whole milk, and a layer of milk foam. Smooth and creamy with natural sweetness, it contains approximately 176 kcal — a perfect balance for a mild coffee experience.</string>
+    <string name="Add_to_Card">$3.4 | Add to Card</string>
+</resources>
