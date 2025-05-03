@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="main fragment" android:id="@+id/fragment2" android:icon="@drawable/anasayfa_icon_24"/>
+    <item android:title="options fragment" android:id="@+id/optionsFragment" android:icon="@drawable/baseline_app_settings_alt_24"/>
+</menu>

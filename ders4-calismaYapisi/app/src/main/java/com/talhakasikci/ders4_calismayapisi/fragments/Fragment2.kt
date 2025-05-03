@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import com.talhakasikci.ders4_calismayapisi.R
 import com.talhakasikci.ders4_calismayapisi.databinding.Fragment2Binding
 import androidx.navigation.fragment.findNavController
@@ -32,6 +33,15 @@ class Fragment2 : Fragment() {
         val mesaj = "${bundle.message} : ${bundle.positiveNumber}"
 
         binding.fragment2Tv.text = mesaj
+
+      /*  val geriTusu = object: OnBackPressedCallback(true){//geri donus aktif değil
+            override fun handleOnBackPressed() {
+                Log.e("Logs", "geri tüsuna basıldı")
+                // isEnabled = false //geri donus aktif hale geldi
+            }
+        }*/
+
+        //requireActivity().onBackPressedDispatcher.addCallback(geriTusu)
 
         binding.fragment2ToFragment1Button.setOnClickListener {
             val action = Fragment2Directions.actionFragment2ToFragment1()
