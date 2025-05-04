@@ -7,4 +7,13 @@ odev-3
 odev-4
 ![alt text](<Ekran görüntüsü 2025-05-04 222338.png>)
 
+odev-5 (Calculator)
+
+![Ekran görüntüsü 2025-05-04 233928](https://github.com/user-attachments/assets/b337c27f-3816-4716-933f-0c2c83582cec) ![Ekran görüntüsü 2025-05-04 233946](https://github.com/user-attachments/assets/360127f7-e775-4e07-babb-5c85ae934e43) ![Ekran görüntüsü 2025-05-04 233954](https://github.com/user-attachments/assets/cf34e5cb-a260-4f44-a9e9-c8d5548aad0d) ![Ekran görüntüsü 2025-05-04 235401](https://github.com/user-attachments/assets/1baee354-d085-46c1-a72e-8ed5a1eac576)
+
+
+
+
+
+
 
