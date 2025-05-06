@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.talhakasikci.ders_4_2_usingwidgets.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +38,18 @@ class MainActivity : AppCompatActivity() {
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ulkeler)
 
         binding.autoCompleteTv.setAdapter(arrayAdapter)
+
+        binding.buttonAlert.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("uyarı")
+                .setMessage("Bu bir uyarı mesajıdır.")
+                .setPositiveButton("Tamam") { dialog, which ->
+                    // Do something when the user clicks "OK"
+                }
+                .setNegativeButton("İptal") { dialog, which ->
+                    // Do something when the user clicks "Cancel"
+                }.show()
+        }
 
 
     }
