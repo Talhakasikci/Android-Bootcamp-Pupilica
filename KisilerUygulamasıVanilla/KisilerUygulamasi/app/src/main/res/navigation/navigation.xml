@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.talhakasikci.kisileruygulamasi.Fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_addPersonFragmet"
+            app:destination="@id/addPersonFragmet" />
+        <action
+            android:id="@+id/action_mainFragment_to_editPersonFragment"
+            app:destination="@id/editPersonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPersonFragmet"
+        android:name="com.talhakasikci.kisileruygulamasi.Fragments.AddPersonFragmet"
+        android:label="fragment_add_person_fragmet"
+        tools:layout="@layout/fragment_add_person_fragmet" />
+    <fragment
+        android:id="@+id/editPersonFragment"
+        android:name="com.talhakasikci.kisileruygulamasi.Fragments.EditPersonFragment"
+        android:label="fragment_edit_person"
+        tools:layout="@layout/fragment_edit_person" >
+        <argument
+            android:name="kisi"
+            app:argType="com.talhakasikci.kisileruygulamasi.data.Entity.Kisiler" />
+    </fragment>
+</navigation>

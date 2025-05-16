@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                     isNewNumber = true
                     display.text = "$totalSum +"
                 } else {
-                    Toast.makeText(this, "Please enter a valid number (MAX value: ${Int.MAX_VALUE})", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Please enter a valid number (MAX value:=) ${Int.MAX_VALUE})", Toast.LENGTH_SHORT).show()
                     display.text = totalSum.toString()
                     currentNumber = ""
                     isNewNumber = true
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     currentNumber = ""
                     isNewNumber = true
                 } else {
-                    Toast.makeText(this, "Please enter a valid number (MAX value: ${Int.MAX_VALUE})", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Please enter a valid number (MAX value:=) ${Int.MAX_VALUE})", Toast.LENGTH_SHORT).show()
                     display.text = totalSum.toString()
                     currentNumber = ""
                     isNewNumber = true

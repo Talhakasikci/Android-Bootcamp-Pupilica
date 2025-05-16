@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.talhakasikci.kisileruygulamasi.Fragments.MainFragment"
+        android:name="com.talhakasikci.kisileruygulamasi.UI.Fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/addPersonFragmet"
-        android:name="com.talhakasikci.kisileruygulamasi.Fragments.AddPersonFragmet"
+        android:name="com.talhakasikci.kisileruygulamasi.UI.Fragments.AddPersonFragmet"
         android:label="fragment_add_person_fragmet"
         tools:layout="@layout/fragment_add_person_fragmet" />
     <fragment
         android:id="@+id/editPersonFragment"
-        android:name="com.talhakasikci.kisileruygulamasi.Fragments.EditPersonFragment"
+        android:name="com.talhakasikci.kisileruygulamasi.UI.Fragments.EditPersonFragment"
         android:label="fragment_edit_person"
         tools:layout="@layout/fragment_edit_person" >
         <argument
