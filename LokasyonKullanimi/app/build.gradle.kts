@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.talhakasikci.workmanager"
+    namespace = "com.talhakasikci.lokasyonkullanimi"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.talhakasikci.workmanager"
+        applicationId = "com.talhakasikci.lokasyonkullanimi"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -33,10 +33,6 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-
-        viewBinding= true
-    }
 }
 
 dependencies {
@@ -49,5 +45,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.work.runtime.ktx)
 }
