@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Todo App</string>
+    <string name="search_hint">Yapılacak ara...</string>
+    <string name="add_todo">Yeni yapılacak ekle</string>
+    <string name="delete">Sil</string>
+    <string name="title">Başlık</string>
+    <string name="content">İçerik</string>
+    <string name="save">Kaydet</string>
+    <string name="update">Güncelle</string>
+</resources>

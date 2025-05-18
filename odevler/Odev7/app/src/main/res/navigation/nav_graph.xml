@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/anaSayfaFragment">
+
+    <fragment
+        android:id="@+id/anaSayfaFragment"
+        android:name="com.talhakasikci.odev7.ui.fragments.AnaSayfaFragment"
+        android:label="Ana Sayfa">
+        <action
+            android:id="@+id/action_anaSayfaFragment_to_kayitSayfaFragment"
+            app:destination="@id/kayitSayfaFragment" />
+        <action
+            android:id="@+id/action_anaSayfaFragment_to_detaySayfaFragment"
+            app:destination="@id/detaySayfaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/kayitSayfaFragment"
+        android:name="com.talhakasikci.odev7.ui.fragments.KayitSayfaFragment"
+        android:label="Yeni Yapılacak" />
+
+    <fragment
+        android:id="@+id/detaySayfaFragment"
+        android:name="com.talhakasikci.odev7.ui.fragments.DetaySayfaFragment"
+        android:label="Detay">
+        <argument
+            android:name="todoId"
+            app:argType="integer" />
+    </fragment>
+
+</navigation> 
