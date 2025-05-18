@@ -16,6 +16,12 @@ odev-6 (Amazon prime UI clone)
 ![Ekran görüntüsü 2025-05-16 184121](https://github.com/user-attachments/assets/bddb1bd7-d175-4520-8128-c74e4a68cf7e)
 ![Ekran görüntüsü 2025-05-16 184133](https://github.com/user-attachments/assets/89358e48-9d09-47f5-9900-e5f94c363c49)
 
+Odev-7 ToDo App
+
+![Ekran görüntüsü 2025-05-19 011424](https://github.com/user-attachments/assets/a0634ce5-2d6a-40e8-b863-ab7bb9119696)  ![Ekran görüntüsü 2025-05-19 011451](https://github.com/user-attachments/assets/341b08c7-7236-479f-ae82-8aad4ed64984)
+![Ekran görüntüsü 2025-05-19 011500](https://github.com/user-attachments/assets/0c84119b-d16b-4fc0-9bdb-36d5404df050) ![Ekran görüntüsü 2025-05-19 011526](https://github.com/user-attachments/assets/2d03aed9-13aa-49ff-930c-4bbc2d888afa)
+
+
 
 
 
