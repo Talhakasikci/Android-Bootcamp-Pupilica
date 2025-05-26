@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_detayFragment"
             app:destination="@id/detayFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_sepetFragment"
+            app:destination="@id/sepetFragment" />
     </fragment>
     <fragment
         android:id="@+id/detayFragment"
@@ -23,4 +26,9 @@
             android:name="yemekDetayi"
             app:argType="com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.data.models.Yemek" />
     </fragment>
+    <fragment
+        android:id="@+id/sepetFragment"
+        android:name="com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.UI.View.SepetFragment"
+        android:label="fragment_sepet"
+        tools:layout="@layout/fragment_sepet" />
 </navigation>

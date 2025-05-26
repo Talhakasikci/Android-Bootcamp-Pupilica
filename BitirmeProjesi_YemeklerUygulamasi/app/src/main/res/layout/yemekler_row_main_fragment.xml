@@ -9,6 +9,7 @@
     android:gravity="center"
     >
 
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,26 +24,50 @@
             >
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageViewRV"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
                 android:scaleType="centerCrop"
                 android:padding="5dp"
                 android:src="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/YemekIsmiTextViewRV"
-                tool:text="Yemek İsmi"
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                >
+                
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/YemekIsmiTextViewRV"
+                        tool:text="Yemek İsmi"
+                        android:padding="5dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/YemekFiyatTextViewRV"
+                        tool:text="10TL"
+                        android:padding="5dp"
+                        />
+                </LinearLayout>
 
-                android:padding="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/YemekFiyatTextViewRV"
-                tool:text="10TL"
-                android:padding="5dp"
-                />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addButton"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/add_24px"
+                    android:layout_gravity="bottom|end"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

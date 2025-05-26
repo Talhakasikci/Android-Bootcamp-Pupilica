@@ -79,6 +79,10 @@ class MainFragment : Fragment() {
         viewModel.hataMesaji.observe(viewLifecycleOwner){hata->
             Log.d("hataMesaji", hata)
         }
+
+        binding.GoToBasket.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_sepetFragment)
+        }
     }
 
 
