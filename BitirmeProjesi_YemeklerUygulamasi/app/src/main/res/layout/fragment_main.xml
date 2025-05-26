@@ -5,20 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.View.MainFragment" >
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:dropDownHeight="0dp"
-        android:hint="aranan yemek ismi girin"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/textInputLayout"
 
-    </AutoCompleteTextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar2"
+        android:hint="Ara"
+
+        >
+        <AutoCompleteTextView
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:dropDownHeight="0dp"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialToolbar2"
+            android:drawableEnd="@drawable/search_24px">
+
+        </AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainRV"
@@ -29,7 +43,7 @@
         app:layout_constraintBottom_toTopOf="@+id/GoToBasket"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/GoToBasket"
@@ -41,4 +55,25 @@
         android:src="@drawable/shopping_cart_24dpopsz24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ana Sayfa"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            />
+    </com.google.android.material.appbar.MaterialToolbar>
 </androidx.constraintlayout.widget.ConstraintLayout>

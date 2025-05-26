@@ -3,6 +3,7 @@ package com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.UI.View
 import MainFragmentAdapter
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,11 +39,24 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.mainRV.layoutManager = GridLayoutManager(requireContext(),2)
-        adapter = MainFragmentAdapter(emptyList()){secilenYemek->
-            Log.d("secilenYemek", secilenYemek.yemek_adi)
-
-
-        }
+        adapter = MainFragmentAdapter(
+            emptyList(),
+            onItemClick = { secilenYemek ->
+                Log.d("secilenYemek", secilenYemek.yemek_adi)
+            },
+            onItemAddClick = { secilenYemek ->
+                // Sepete ekleme işlemi
+                viewModel.sepeteYemekEkle(
+                    yemek_adi = secilenYemek.yemek_adi,
+                    yemek_resim_adi = secilenYemek.yemek_resim_adi,
+                    yemek_fiyat = secilenYemek.yemek_fiyat,
+                    yemek_siparis_adet = 1, // Varsayılan olarak 1 adet
+                    kullanici_adi = "talha_kasikci" // Sabit kullanıcı adı
+                )
+                Toast.makeText(requireContext(), "${secilenYemek.yemek_adi} sepete eklendi!", Toast.LENGTH_SHORT).show()
+                Log.d("sepeteEkleme", "${secilenYemek.yemek_adi} sepete eklendi")
+            }
+        )
         binding.mainRV.adapter = adapter
 
 
@@ -50,15 +64,29 @@ class MainFragment : Fragment() {
 
         viewModel.yemeklerListesi.observe(viewLifecycleOwner){yemekler->
             Log.d("yemeklerListesi", yemekler.toString())
-            adapter = MainFragmentAdapter(yemekler) { secilenYemek ->
-                Log.d("secilenYemek", secilenYemek.yemek_adi)
+            adapter = MainFragmentAdapter(
+                yemekler,
+                onItemClick = { secilenYemek ->
+                    Log.d("secilenYemek", secilenYemek.yemek_adi)
 
-                val bundle = Bundle().apply {
-                    putParcelable("secilenYemek", secilenYemek)
-                }
-                findNavController().navigate(R.id.action_mainFragment_to_detayFragment, bundle)
-
-            }
+                    val bundle = Bundle().apply {
+                        putParcelable("secilenYemek", secilenYemek)
+                    }
+                    findNavController().navigate(R.id.action_mainFragment_to_detayFragment, bundle)
+                },
+                                    onItemAddClick = { secilenYemek ->
+                        // Sepete ekleme işlemi
+                        viewModel.sepeteYemekEkle(
+                            yemek_adi = secilenYemek.yemek_adi,
+                            yemek_resim_adi = secilenYemek.yemek_resim_adi,
+                            yemek_fiyat = secilenYemek.yemek_fiyat,
+                            yemek_siparis_adet = 1, // Varsayılan olarak 1 adet
+                            kullanici_adi = "talha_kasikci" // Sabit kullanıcı adı
+                        )
+                        Toast.makeText(requireContext(), "${secilenYemek.yemek_adi} sepete eklendi!", Toast.LENGTH_SHORT).show()
+                        Log.d("sepeteEkleme", "${secilenYemek.yemek_adi} sepete eklendi")
+                    }
+            )
             binding.mainRV.adapter = adapter
 
             binding.autoCompleteTextView.addTextChangedListener {
@@ -66,8 +94,28 @@ class MainFragment : Fragment() {
                     yemek.yemek_adi.contains(it.toString(),ignoreCase = true)
                 }
 
-                adapter = MainFragmentAdapter(arananYemek) {
-                }
+                adapter = MainFragmentAdapter(
+                    arananYemek,
+                    onItemClick = { secilenYemek ->
+                        Log.d("secilenYemek", secilenYemek.yemek_adi)
+
+                        val bundle = Bundle().apply {
+                            putParcelable("secilenYemek", secilenYemek)
+                        }
+                        findNavController().navigate(R.id.action_mainFragment_to_detayFragment, bundle)
+                    },
+                    onItemAddClick = { secilenYemek ->
+                        // Sepete ekleme işlemi
+                        viewModel.sepeteYemekEkle(
+                            yemek_adi = secilenYemek.yemek_adi,
+                            yemek_resim_adi = secilenYemek.yemek_resim_adi,
+                            yemek_fiyat = secilenYemek.yemek_fiyat,
+                            yemek_siparis_adet = 1, // Varsayılan olarak 1 adet
+                            kullanici_adi = "talha_kasikci" // Sabit kullanıcı adı
+                        )
+                        Log.d("sepeteEkleme", "${secilenYemek.yemek_adi} sepete eklendi")
+                    }
+                )
 
                 binding.mainRV.adapter = adapter
             }

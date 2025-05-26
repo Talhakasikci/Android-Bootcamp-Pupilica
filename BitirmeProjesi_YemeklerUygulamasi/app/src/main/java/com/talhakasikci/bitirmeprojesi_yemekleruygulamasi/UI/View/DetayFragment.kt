@@ -45,6 +45,16 @@ class DetayFragment : Fragment() {
         // Varsayılan adet değeri
         binding.YemekAdet.setText("1")
 
+        binding.btnPlus.setOnClickListener {
+            val currentPiece = binding.YemekAdet.text.toString().toIntOrNull() ?: 0
+            binding.YemekAdet.setText((currentPiece+1).toString())
+        }
+
+        binding.btnMinus.setOnClickListener {
+            val currentPiece = binding.YemekAdet.text.toString().toIntOrNull() ?: 0
+            binding.YemekAdet.setText((currentPiece-1).toString())
+        }
+
         binding.AddToBasket.setOnClickListener {
             Log.d("DetayFragment", "BUTTON BASILDI!")
             val adet = binding.YemekAdet.text.toString().toIntOrNull() ?: 1
@@ -62,9 +72,7 @@ class DetayFragment : Fragment() {
             }
         }
 
-        binding.sepettenGetir.setOnClickListener {
-            viewModel.sepettekiYemekleriGetir("Talha_Kasikci")
-        }
+
 
 
         viewModel.sepetYemeklerListesi.observe(viewLifecycleOwner) { sepettekiYemekler ->

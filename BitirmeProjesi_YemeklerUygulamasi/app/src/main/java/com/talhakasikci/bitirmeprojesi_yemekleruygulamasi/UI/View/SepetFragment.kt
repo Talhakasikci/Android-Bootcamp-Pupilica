@@ -127,7 +127,7 @@ class SepetFragment : Fragment() {
             updateTotalPrice(yeniToplamTutar)
         }
         
-        // Arka planda gerçek veriyi güncelle (doğrulama için)
+
         binding.root.postDelayed({
             viewModel.sepettekiYemekleriGetir("Talha_Kasikci")
         }, 1000)

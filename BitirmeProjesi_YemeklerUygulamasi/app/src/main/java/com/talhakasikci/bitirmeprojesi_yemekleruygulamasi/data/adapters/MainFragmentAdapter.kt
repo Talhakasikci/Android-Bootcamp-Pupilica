@@ -8,7 +8,8 @@ import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.databinding.YemeklerRo
 
 class MainFragmentAdapter(
     private val yemekListesi: List<Yemek>,
-    private val onItemClick: (Yemek) -> Unit
+    private val onItemClick: (Yemek) -> Unit,
+    private val onItemAddClick: (Yemek) -> Unit
 ) : RecyclerView.Adapter<MainFragmentAdapter.MainFragmentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainFragmentViewHolder {
@@ -22,7 +23,7 @@ class MainFragmentAdapter(
 
     override fun onBindViewHolder(holder: MainFragmentViewHolder, position: Int) {
         val yemek = yemekListesi[position]
-        holder.bind(yemek)
+        holder.bind(yemek, onItemAddClick)
 
         // Set click listener
         holder.itemView.setOnClickListener {
@@ -33,7 +34,7 @@ class MainFragmentAdapter(
     override fun getItemCount(): Int = yemekListesi.size
 
     class MainFragmentViewHolder(private val binding: YemeklerRowMainFragmentBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(yemek: Yemek) {
+        fun bind(yemek: Yemek, onItemAddClick: (Yemek) -> Unit) {
             binding.YemekIsmiTextViewRV.text = yemek.yemek_adi
             binding.YemekFiyatTextViewRV.text = "${yemek.yemek_fiyat} TL"
 
@@ -43,6 +44,13 @@ class MainFragmentAdapter(
                 .load(imageUrl)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(binding.imageViewRV)
+
+            binding.addButton.setOnClickListener {
+                // Tıklama olayını tetikle
+                onItemAddClick(yemek)
+            }
         }
+
+
     }
 }
