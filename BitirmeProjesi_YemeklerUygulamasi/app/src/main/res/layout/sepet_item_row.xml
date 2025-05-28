@@ -43,7 +43,7 @@
                     android:id="@+id/YemekIsmiTextViewRV"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/yazirengi"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                     android:gravity="center_vertical"
                     tool:text="adet: 2"
                     android:id="@+id/YemekAdetTextViewRV"
-                    android:textColor="@color/black"
+                    android:textColor="@color/yazirengi"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:gravity="center_vertical"
                     tool:text="Fiyat: 25TL"
                     android:id="@+id/YemekFiyatTextViewRV"
-                    android:textColor="@color/black"
+                    android:textColor="@color/yazirengi"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
                     android:textStyle="bold"
                     android:textSize="17sp"
                     android:id="@+id/YemekToplamFiyatTextViewRV"
-                    android:textColor="@color/black"
+                    android:textColor="@color/yazirengi"
                     />
             </LinearLayout>
 
@@ -85,6 +85,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/deleteButton"
+                    app:iconTint="@color/yazirengi"
                     style="@style/Widget.Material3.Button.IconButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

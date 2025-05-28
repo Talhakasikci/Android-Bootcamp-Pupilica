@@ -51,14 +51,14 @@
                         android:id="@+id/YemekIsmiTextViewRV"
                         tool:text="Yemek İsmi"
                         android:padding="5dp"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/yazirengi"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/YemekFiyatTextViewRV"
                         tool:text="10 TL"
                         android:padding="5dp"
-                        android:textColor="@color/black"
+                        android:textColor="@color/yazirengi"
                         />
                 </LinearLayout>
 
