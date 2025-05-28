@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         style="@style/Widget.Material3.CardView.Outlined"
+        app:cardElevation="10dp"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
         >
         <LinearLayout
@@ -42,6 +43,7 @@
                     android:id="@+id/YemekIsmiTextViewRV"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -50,6 +52,7 @@
                     android:gravity="center_vertical"
                     tool:text="adet: 2"
                     android:id="@+id/YemekAdetTextViewRV"
+                    android:textColor="@color/black"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,6 +61,7 @@
                     android:gravity="center_vertical"
                     tool:text="Fiyat: 25TL"
                     android:id="@+id/YemekFiyatTextViewRV"
+                    android:textColor="@color/black"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -68,6 +72,7 @@
                     android:textStyle="bold"
                     android:textSize="17sp"
                     android:id="@+id/YemekToplamFiyatTextViewRV"
+                    android:textColor="@color/black"
                     />
             </LinearLayout>
 

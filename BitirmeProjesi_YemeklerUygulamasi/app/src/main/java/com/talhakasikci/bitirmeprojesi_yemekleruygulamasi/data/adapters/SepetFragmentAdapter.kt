@@ -51,4 +51,5 @@ class SepetFragmentAdapter(
         holder.bind(sepetYemekler,onDeleteClick)
 
     }
+
 }

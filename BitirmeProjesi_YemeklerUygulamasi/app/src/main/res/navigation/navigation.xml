@@ -25,6 +25,9 @@
         <argument
             android:name="yemekDetayi"
             app:argType="com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.data.models.Yemek" />
+        <action
+            android:id="@+id/action_detayFragment_to_sepetFragment"
+            app:destination="@id/sepetFragment" />
     </fragment>
     <fragment
         android:id="@+id/sepetFragment"

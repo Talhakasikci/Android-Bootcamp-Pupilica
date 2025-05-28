@@ -2,12 +2,13 @@ package com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.UI.View
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.R
 import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.UI.viewModel.YemeklerViewModel
@@ -18,6 +19,7 @@ import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.databinding.FragmentDe
 class DetayFragment : Fragment() {
     private lateinit var binding: FragmentDetayBinding
     private val viewModel: YemeklerViewModel by viewModels()
+    private var quantity = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +35,6 @@ class DetayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val secilenYemek = arguments?.getParcelable<Yemek>("secilenYemek") as Yemek
 
-
         binding.YemekAdi.text  = secilenYemek.yemek_adi
         binding.yemekFiyat.text = "${secilenYemek.yemek_fiyat} TL"
         val imageUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${secilenYemek.yemek_resim_adi}"
@@ -43,57 +44,77 @@ class DetayFragment : Fragment() {
             .into(binding.yemekResim)
 
         // Varsayılan adet değeri
-        binding.YemekAdet.setText("1")
+        binding.TotalPriceTextView.text = "Toplam: ${secilenYemek.yemek_fiyat.toInt()} TL"
+        updateQuantityDisplay()
 
+        // Quantity selector buton click listener'ları
         binding.btnPlus.setOnClickListener {
-            val currentPiece = binding.YemekAdet.text.toString().toIntOrNull() ?: 0
-            binding.YemekAdet.setText((currentPiece+1).toString())
+            if (quantity < 99) { // Maksimum 99 adet
+                quantity++
+                updateQuantityDisplay()
+            }
+            binding.TotalPriceTextView.text ="Toplam: ${secilenYemek.yemek_fiyat.toInt() * quantity} TL"
         }
 
         binding.btnMinus.setOnClickListener {
-            val currentPiece = binding.YemekAdet.text.toString().toIntOrNull() ?: 0
-            binding.YemekAdet.setText((currentPiece-1).toString())
+            if (quantity > 1) { // Minimum 1 adet
+                quantity--
+                updateQuantityDisplay()
+            }
+            binding.TotalPriceTextView.text ="Toplam: ${secilenYemek.yemek_fiyat.toInt() * quantity} TL"
         }
 
         binding.AddToBasket.setOnClickListener {
             Log.d("DetayFragment", "BUTTON BASILDI!")
-            val adet = binding.YemekAdet.text.toString().toIntOrNull() ?: 1
-            if (adet > 0) {
-                viewModel.sepeteYemekEkle(
-                    secilenYemek.yemek_adi,
-                    secilenYemek.yemek_resim_adi,
-                    secilenYemek.yemek_fiyat,
-                    adet,
-                    "Talha_Kasikci"
-                )
-                Toast.makeText(requireContext(), "Ürün sepete eklendi!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Geçerli bir adet giriniz!", Toast.LENGTH_SHORT).show()
-            }
+            Log.d("DetayFragment", "Sepete ekleme başlatılıyor: ${secilenYemek.yemek_adi}, adet: $quantity")
+            
+            viewModel.sepeteYemekEkle(
+                secilenYemek.yemek_adi,
+                secilenYemek.yemek_resim_adi,
+                secilenYemek.yemek_fiyat,
+                quantity,
+                "Talha_Kasikci"
+            )
+            
+            Toast.makeText(
+                requireContext(),
+                "$quantity adet ${secilenYemek.yemek_adi} sepete eklendi!",
+                Toast.LENGTH_SHORT
+            ).show()
+            findNavController().navigate(R.id.action_detayFragment_to_sepetFragment)
         }
 
 
 
-
+        // Sepet yemekleri için doğru LiveData'yı observe et
         viewModel.sepetYemeklerListesi.observe(viewLifecycleOwner) { sepettekiYemekler ->
+            Log.d("DetayFragment", "Sepetteki yemekler geldi: ${sepettekiYemekler.size} adet")
             if (sepettekiYemekler.isNotEmpty()) {
                 Log.e("sepettekiYemekler", sepettekiYemekler.toString())
-                Toast.makeText(
-                    requireContext(), 
-                    "Sepette ${sepettekiYemekler.size} ürün var", 
-                    Toast.LENGTH_SHORT
-                ).show()
             } else {
                 Log.e("sepettekiYemekler", "sepette hiç yemek yok")
-                Toast.makeText(requireContext(), "Sepette hiç ürün yok", Toast.LENGTH_SHORT).show()
             }
         }
 
         // Hata mesajlarını observe et
         viewModel.hataMesaji.observe(viewLifecycleOwner) { hata ->
-            Toast.makeText(requireContext(), hata, Toast.LENGTH_LONG).show()
-            Log.e("DetayFragment", hata)
+            Log.e("DetayFragment", "Hata oluştu: $hata")
         }
+
+        // Floating Action Button - Sepete Git
+
+    }
+
+    private fun updateQuantityDisplay() {
+        binding.YemekAdet.text = quantity.toString()
+        
+        // Butonların durumunu güncelle
+        binding.btnMinus.isEnabled = quantity > 1
+        binding.btnPlus.isEnabled = quantity < 99
+        
+        // Disabled butonların görsel durumunu ayarla
+        binding.btnMinus.alpha = if (quantity > 1) 1.0f else 0.5f
+        binding.btnPlus.alpha = if (quantity < 99) 1.0f else 0.5f
     }
 
 

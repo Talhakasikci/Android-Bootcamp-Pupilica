@@ -61,4 +61,6 @@ dependencies {
     implementation (libs.material)
     implementation (libs.glide)
     kapt (libs.compiler)
+
+    implementation(libs.lottie)
 }

@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.R
 import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.UI.viewModel.YemeklerViewModel
 import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.data.adapters.SepetFragmentAdapter
 import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.data.models.sepet_yemekler
 import com.talhakasikci.bitirmeprojesi_yemekleruygulamasi.databinding.FragmentSepetBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import okhttp3.internal.notifyAll
 
 
 class SepetFragment : Fragment() {
@@ -37,7 +41,27 @@ class SepetFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = SepetFragmentAdapter(emptyList()) { }
         binding.recyclerView.adapter = adapter
+        
+        // İlk başta boş sepet mesajını göster
+        showEmptyMessage()
+        
         viewModel.sepettekiYemekleriGetir("Talha_Kasikci")
+
+        // Sepeti Onayla Buton Click Listener
+        binding.materialButton.setOnClickListener {
+            if( orijinalSepetListesi.isNotEmpty()) {
+                lifecycleScope.launch {
+                    showSuccessAnimation()
+                    delay(3000)
+                    clearBasketAfterOrder()
+                }
+
+            }else{
+                // Sepet boşsa kullanıcıya bilgi ver
+
+                return@setOnClickListener
+            }
+        }
 
         viewModel.sepetYemeklerListesi.observe(viewLifecycleOwner) { sepetYemekler ->
 
@@ -136,4 +160,56 @@ class SepetFragment : Fragment() {
     private fun updateTotalPrice(toplamTutar: Int) {
         binding.toplamTutarSepet.text = "${toplamTutar} TL"
     }
-}
+
+    private fun showEmptyMessage() {
+        binding.recyclerView.visibility = View.GONE
+        binding.emptyTextView.visibility = View.VISIBLE
+        updateTotalPrice(0)
+    }
+
+    private fun showSuccessAnimation() {
+        // Animasyonu göster
+        binding.successAnimationView.visibility = View.VISIBLE
+        
+        // JSON dosyasını yükle (eğer layout'ta tanımlanmamışsa)
+        try {
+            binding.successAnimationView.setAnimation(R.raw.success_animation)
+        } catch (e: Exception) {
+            // Eğer dosya bulunamazsa varsayılan animasyon göster
+            android.widget.Toast.makeText(requireContext(), "Animasyon dosyası bulunamadı", android.widget.Toast.LENGTH_SHORT).show()
+            return
+        }
+        
+        // Animasyonu başlat
+        binding.successAnimationView.playAnimation()
+        
+        // Animasyon bittiğinde overlay'i gizle
+        binding.successAnimationView.addAnimatorListener(object : android.animation.Animator.AnimatorListener {
+            override fun onAnimationStart(animation: android.animation.Animator) {}
+            override fun onAnimationRepeat(animation: android.animation.Animator) {}
+            override fun onAnimationCancel(animation: android.animation.Animator) {}
+            
+            override fun onAnimationEnd(animation: android.animation.Animator) {
+                // 1 saniye bekle ve sonra gizle
+                binding.root.postDelayed({
+                    binding.successAnimationView.visibility = View.GONE
+                    
+                    // İsteğe bağlı: Ana sayfaya dön veya mesaj göster
+                    android.widget.Toast.makeText(
+                        requireContext(), 
+                        "Siparişiniz başarıyla alındı!", 
+                        android.widget.Toast.LENGTH_LONG
+                    ).show()
+                }, 1000)
+            }
+        })
+    }
+    private fun clearBasketAfterOrder(){
+    orijinalSepetListesi.forEach { sepetYemek->
+        viewModel.sepettenYemekSil(sepetYemek.sepet_yemek_id.toInt(), "Talha_Kasikci")
+    }
+        orijinalSepetListesi = emptyList()
+        showEmptyMessage()
+        binding.root.postDelayed({viewModel.sepettekiYemekleriGetir("Talha_Kasikci")}, 1000)
+        }
+    }
